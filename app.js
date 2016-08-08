@@ -7,9 +7,7 @@ var bodyParser = require('body-parser');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json()); // for parsing application/json	
  
-// Plug in your Secret API Key 
-// Get it here: https://app.pushy.me/ 
-var pushyAPI = new Pushy('319dacb71a6ceb32d4e943b19045844db777610c11920094165605785014eed8');
+// memory storage for device id 
 var tokens;
  
 app.get('/', function (req, res) {
@@ -34,6 +32,7 @@ app.post('/send', function(req, res) {
 	    // Set the notification to expire if not delivered within 30 seconds 
 	    time_to_live: 30
 	};
+	var pushyAPI = new Pushy('319dacb71a6ceb32d4e943b19045844db777610c11920094165605785014eed8');
 	pushyAPI.sendPushNotification(data, tokens, options, function (err, id) {
     	// Log errors to console 
     	if (err) {
