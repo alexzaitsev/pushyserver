@@ -34,6 +34,7 @@ app.post('/send', function(req, res) {
 	    // Set the notification to expire if not delivered within 30 seconds 
 	    time_to_live: 30
 	};
+	console.log('sending ' + JSON.stringify(data) + ' to ' + JSON.stringify(tokens));
 	pushyAPI.sendPushNotification(data, tokens, options, function (err, id) {
     	// Log errors to console 
     	if (err) {
