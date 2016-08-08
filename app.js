@@ -35,11 +35,10 @@ app.post('/send', function(req, res) {
 	var pushyAPI = new Pushy('319dacb71a6ceb32d4e943b19045844db777610c11920094165605785014eed8');
 	pushyAPI.sendPushNotification(data, tokens, options, function (err, id) {
     	// Log errors to console 
-    	if (err) {
-        	res.send({status: 'sending ' + JSON.stringify(data) + ' to ' + JSON.stringify(tokens) + ' and got error ' + JSON.stringify(err)});
+    	if (!err || JSON.stringify(err) === '{}') {
+        	res.send({status: 200});
     	} else {
-			// Log success 
-			res.send({status: 200});
+			res.send({status: 'sending ' + JSON.stringify(data) + ' to ' + JSON.stringify(tokens) + ' and got error ' + JSON.stringify(err)});
 		}
 	});
 });
