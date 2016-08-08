@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var server = require('http').createServer(app);
 var Pushy = require('pushy-node');
 var bodyParser = require('body-parser');
 
@@ -44,6 +45,7 @@ app.post('/send', function(req, res) {
 	});
 });
 
-app.listen(3000, function () {
-  console.log('Listening on port 3000!');
+app.set('port', process.env.PORT || 3000);
+server.listen(app.get('port'), function() {
+  console.log('created express server on port ' + app.get('port'));
 });
