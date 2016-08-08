@@ -1,0 +1,14 @@
+{
+  "name": "pushyserver",
+  "version": "0.0.1",
+  "description": "server for pushy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Zaitsev <alex.zaitsev.pro@gmail.com> (http://diveintoworld.com)",
+  "license": "ISC",
+  "dependencies": {
+    "pushy-node": "^1.0.1"
+  }
+}

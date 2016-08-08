@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pushy Demo</title>
+  <meta name="robots" content="noindex">
+</head>
+<body>
+
+  <script src="js/jquery-1.11.2.min.js"></script>
+
+	<script language="JavaScript">
+
+		function setDeviceId (form) {
+        var deviceid = form.deviceid.value;
+    		
+        var reqParams = { 
+            "deviceid": deviceid
+          };
+
+        $.ajax({
+          url: '/add_device',
+          type: "POST",
+          data: JSON.stringify(reqParams),
+          contentType: "application/json",
+          dataType: "json",
+          success: function(response){
+            if (response.status == 200) {
+              $("#result_add_device").text("Updated successfully");
+            } else {
+              $("#result_add_device").text("Error " + response.status);
+            }
+          },
+          error: function(response){
+            $("#result_add_device").text("Erorr callback " + response.status);
+          }
+        });
+		}
+
+		function resetDeviceId (form) {
+        form.deviceid.value = "";
+        $("#result_add_device").text("");
+		}
+
+		function sendMessage (form) {
+			var message = form.message.value;
+
+        var reqParams = { 
+            "message": message
+          };
+
+        $.ajax({
+          url: '/send',
+          type: "POST",
+          data: JSON.stringify(reqParams),
+          contentType: "application/json",
+          dataType: "json",
+          success: function(response){
+            if (response.status == 200) {
+              $("#result_send_message").text("Sent successfully");
+            } else {
+              $("#result_send_message").text("Error " + response.status);
+            }
+          },
+          error: function(response){
+            $("#result_send_message").text("Erorr callback " + response.status);
+          }
+        });
+		}
+
+		function resetMessage (form) {
+			form.message.value = "";
+      $("#result_send_message").text("");
+		}
+	</script>
+
+
+	Set device id to get notifications<br>
+	<form name="set_device_id">
+  		<p>    
+        <input name="deviceid" type="text" placeholder="Device Id">
+  		<p>
+        <input type="button" value="Set" onClick="setDeviceId(this.form)">
+        <input type="button" value="Reset" onClick="resetDeviceId(this.form)">
+      </p>
+      <p>
+        <span id="result_add_device"></span>
+      </p>
+ 	</form>
+
+ 	<br><br><br>
+
+  Send notification<br>
+ 	<form name="send_message">
+ 		<p>
+      <input name="message" type="text" placeholder="Message">
+    </p>
+ 		<p>
+      <input type="button" value="Send" onClick="sendMessage(this.form)">
+   		<input type="button" value="Reset" onClick="resetMessage(this.form)">
+    </p>
+    <p>
+        <span id="result_send_message"></span>
+      </p>
+ 	</form>
+ 	
+</body>
+</html>	
