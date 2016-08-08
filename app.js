@@ -9,7 +9,7 @@ app.use(bodyParser.json()); // for parsing application/json
  
 // Plug in your Secret API Key 
 // Get it here: https://app.pushy.me/ 
-var pushyAPI = new Pushy('7064401b1eb5b0f611326af13c8c5b1fff6f46b6766b2d26a46bf50b76e504d2');
+var pushyAPI = new Pushy('319dacb71a6ceb32d4e943b19045844db777610c11920094165605785014eed8');
 var tokens;
  
 app.get('/', function (req, res) {
