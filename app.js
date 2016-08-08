@@ -3,8 +3,6 @@ var app = express();
 var Pushy = require('pushy-node');
 var bodyParser = require('body-parser');
 
-app.set('views', __dirname + '/views'); // view engine setup
-app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json()); // for parsing application/json	
  
