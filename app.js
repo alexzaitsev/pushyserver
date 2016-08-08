@@ -37,10 +37,10 @@ app.post('/send', function(req, res) {
     	// Log errors to console 
     	if (err) {
         	res.send({status: 'sending ' + JSON.stringify(data) + ' to ' + JSON.stringify(tokens) + ' and got error ' + JSON.stringify(err)});
-    	}
-    
-    	// Log success 
-    	res.send({status: 200});
+    	} else {
+			// Log success 
+			res.send({status: 200});
+		}
 	});
 });
 
