@@ -32,7 +32,7 @@ app.post('/send', function(req, res) {
 	    // Set the notification to expire if not delivered within 30 seconds 
 	    time_to_live: 30
 	};
-	var pushyAPI = new Pushy('319dacb71a6ceb32d4e943b19045844db777610c11920094165605785014eed8');
+	var pushyAPI = new Pushy('0601818e16928f5ffd518a4d09a619aa4f4e956b63f681c05a08f086cf6156c4');
 	pushyAPI.sendPushNotification(data, tokens, options, function (err, id) {
     	// Log errors to console 
     	if (!err || JSON.stringify(err) === '{}') {
