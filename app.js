@@ -36,6 +36,7 @@ app.post('/send', function(req, res) {
 	pushyAPI.sendPushNotification(data, tokens, options, function (err, id) {
     	// Log errors to console 
     	if (!err || JSON.stringify(err) === '{}') {
+    		console.log("sendpush_success: " + JSON.stringify(data));
         	res.send({status: 200});
     	} else {
 			res.send({status: 'sending ' + JSON.stringify(data) + ' to ' + JSON.stringify(tokens) + ' and got error ' + JSON.stringify(err)});
